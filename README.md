@@ -34,7 +34,6 @@ let processor = Relay.recordAndReplay(
 
 > ⚠️ **Warning:** When replaying network requests with Relay in unit tests, **disable test parallelization** to avoid conflicts, as Relay supports only one replay session at a time. Configure your test suite to run serially by setting the test scheme's `Execution Order` to **Sequential** in Xcode.
 
-**Note**: Recordings are saved in the `__RelayRecords__` folder, which is created automatically if it doesn't exist.
 
 ### Intercepting Requests & Modifying Responses
 
