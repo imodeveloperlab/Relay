@@ -22,7 +22,7 @@ public final class Relay {
     ///   - jsonValueOverrides: A dictionary of JSON keys and their replacement values in responses.
     /// - Returns: A `RecordingAndReplayingRequestProcessor` instance for handling requests.
     @discardableResult
-    static func recordAndReplay(
+    public static func recordAndReplay(
         recordingRootFolder: String = #file,
         recordingFolder: String = #function,
         isRecordingEnabled: Bool = false,
@@ -53,7 +53,7 @@ public final class Relay {
     ///   - requestProcessor: The request processor to handle requests.
     ///   - urlKeywords: A list of keywords to filter URLs for interception.
     ///   - jsonValueOverrides: A dictionary of JSON keys and their replacement values in responses.
-    static func interceptAndModify(
+    public static func interceptAndModify(
         requestProcessor: RequestProcessor = LiveRequestAndReplayRequestProcessor(),
         urlKeywords: [String] = [],
         jsonValueOverrides: [String: String] = [:]
@@ -78,7 +78,7 @@ public final class Relay {
     ///   - interceptionConfig: Configuration for intercepting and modifying requests.
     /// - Returns: A `RecordingAndReplayingRequestProcessor` instance for handling requests.
     @discardableResult
-    static func startRecordingAndReplaying(
+    public static func startRecordingAndReplaying(
         recordingConfig: RecordingConfig = RecordingConfig(
             rootPath: #file,
             subfolder: #function,
@@ -109,7 +109,7 @@ public final class Relay {
     /// - Parameters:
     ///   - requestProcessor: The request processor to handle requests.
     ///   - interceptionConfig: Configuration for intercepting and modifying requests.
-    static func startInterceptingAndModifying(
+    public static func startInterceptingAndModifying(
         requestProcessor: RequestProcessor = LiveRequestAndReplayRequestProcessor(),
         interceptionConfig: InterceptionConfig = InterceptionConfig(
             urlKeywords: [],
