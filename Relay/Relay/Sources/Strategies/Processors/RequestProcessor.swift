@@ -5,6 +5,8 @@
 //  Created by Ivan Borinschi on 01.12.2024.
 //
 
+import Foundation
+
 public enum RequestProcessorError: Error, LocalizedError {
     case noRequestsToExecute
     public var errorDescription: String? {

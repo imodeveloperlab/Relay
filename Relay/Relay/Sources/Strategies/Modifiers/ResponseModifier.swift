@@ -5,6 +5,7 @@
 //  Created by Ivan Borinschi on 01.12.2024.
 //
 
+import Foundation
 
 public protocol ResponseModifier {
     func modify(response: NetworkResponse) async throws -> NetworkResponse

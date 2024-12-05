@@ -5,6 +5,7 @@
 //  Created by Ivan Borinschi on 01.12.2024.
 //
 
+import Foundation
 
 public protocol RecordingDirectoryFileManager {
     func configure(directoryPath: String, folderName: String)

@@ -5,6 +5,7 @@
 //  Created by Ivan Borinschi on 01.12.2024.
 //
 
+import Foundation
 
 /// Configuration for intercepting and modifying network requests.
 public struct InterceptionConfig {

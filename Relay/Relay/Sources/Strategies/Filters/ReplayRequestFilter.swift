@@ -5,6 +5,7 @@
 //  Created by Ivan Borinschi on 01.12.2024.
 //
 
+import Foundation
 
 public final class ReplayRequestFilter: RequestFilter {
     public func shouldProcess(request: URLRequest) -> Bool {

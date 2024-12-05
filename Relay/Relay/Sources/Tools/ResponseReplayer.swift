@@ -5,6 +5,8 @@
 //  Created by Ivan Borinschi on 01.12.2024.
 //
 
+import Foundation
+
 public enum ResponseReplayerError: Error, LocalizedError {
     case invalidRecordedResponseData(URLRequest)
     public var errorDescription: String? {
