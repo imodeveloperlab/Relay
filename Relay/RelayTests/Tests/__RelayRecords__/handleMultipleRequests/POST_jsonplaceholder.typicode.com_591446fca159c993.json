@@ -1,0 +1,45 @@
+{
+  "service" : "https:\/\/jsonplaceholder.typicode.com\/posts",
+  "responseHeaders" : {
+    "nel" : "{\"report_to\":\"heroku-nel\",\"max_age\":3600,\"success_fraction\":0.005,\"failure_fraction\":0.05,\"response_headers\":[\"Via\"]}",
+    "Via" : "1.1 vegur",
+    "Pragma" : "no-cache",
+    "access-control-expose-headers" : "Location",
+    "Content-Length" : "84",
+    "x-powered-by" : "Express",
+    "Vary" : "Origin, X-HTTP-Method-Override, Accept-Encoding",
+    "x-ratelimit-limit" : "1000",
+    "Date" : "Thu, 28 Nov 2024 13:15:16 GMT",
+    "server-timing" : "cfL4;desc=\"?proto=QUIC&rtt=52229&min_rtt=32796&rtt_var=8412&sent=25&recv=20&lost=0&retrans=0&sent_bytes=11026&recv_bytes=5858&delivery_rate=14367&cwnd=12000&unsent_bytes=0&cid=36b5c89b5edfe772&ts=1026&x=1\", cfHdrFlush;dur=0",
+    "x-ratelimit-reset" : "1732799761",
+    "Location" : "https:\/\/jsonplaceholder.typicode.com\/posts\/101",
+    "Alt-Svc" : "h3=\":443\"; ma=86400",
+    "cf-ray" : "8e9aa0307f865bb2-VIE",
+    "Server" : "cloudflare",
+    "Etag" : "W\/\"54-hMaU7hdjgJRpP2n+ZXjMN3slGcU\"",
+    "Cache-Control" : "no-cache",
+    "cf-cache-status" : "DYNAMIC",
+    "Content-Type" : "application\/json; charset=utf-8",
+    "x-ratelimit-remaining" : "998",
+    "Expires" : "-1",
+    "access-control-allow-credentials" : "true",
+    "reporting-endpoints" : "heroku-nel=https:\/\/nel.heroku.com\/reports?ts=1732799715&sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d&s=pu1JMVthvbdjJpwLU8e6CGvbIaRXn8Am20UeMZJmXVI%3D",
+    "x-content-type-options" : "nosniff",
+    "report-to" : "{\"group\":\"heroku-nel\",\"max_age\":3600,\"endpoints\":[{\"url\":\"https:\/\/nel.heroku.com\/reports?ts=1732799715&sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d&s=pu1JMVthvbdjJpwLU8e6CGvbIaRXn8Am20UeMZJmXVI%3D\"}]}"
+  },
+  "requestBody" : {
+    "isBase64Encoded" : false,
+    "data" : ""
+  },
+  "responseData" : {
+    "isBase64Encoded" : false,
+    "data" : "{\n  \"title\": \"Hello World\",\n  \"id\": 101,\n  \"body\": \"This is a test\",\n  \"userId\": 1\n}"
+  },
+  "requestType" : "POST",
+  "statusCode" : 201,
+  "requestHeaders" : {
+    "Content-Type" : "application\/json",
+    "Content-Length" : "65",
+    "X-RelayReplay" : "true"
+  }
+}

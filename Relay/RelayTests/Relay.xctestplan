@@ -1,0 +1,25 @@
+{
+  "configurations" : [
+    {
+      "id" : "1058A677-CB0B-418B-8E8A-7AD682DF1998",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : false,
+      "target" : {
+        "containerPath" : "container:Relay.xcodeproj",
+        "identifier" : "60AE256D2D01CEAB00927FCC",
+        "name" : "RelayTests"
+      }
+    }
+  ],
+  "version" : 1
+}
