@@ -4,7 +4,29 @@ Relay is a Swift framework that simplifies recording, replaying, intercepting, a
 
 ## Purpose
 
-The primary use case for Relay is **unit tests and SwiftUI previews that require server connections**. By recording server responses once and replaying them in subsequent runs, you ensure fast, consistent, and reliable tests without constantly hitting the actual server. Relay also shines in **SwiftUI previews**, allowing you to load previews using previously recorded data. This accelerates the preview process, lets you manipulate a single recorded response for various test states, and avoids repeatedly calling the server.
+The primary use case for Relay is **unit tests and SwiftUI previews that require server connections**. By recording server responses once and replaying them in subsequent runs, you ensure fast, consistent, and reliable tests without constantly hitting the actual server. Relay also shines in **SwiftUI previews**, allowing you to load previews using previously recorded data. This accelerates the preview process, lets you manipulate a single recorded response for various states, and avoids repeatedly calling the server.
+
+## How It Works
+
+When you run your test or preview with `isRecordingEnabled = true`, Relay intercepts HTTP requests and captures both the request and the corresponding response. These are stored as separate files in a structured directory (e.g., `__RelayRecords__`) relative to the test or preview code file. On subsequent runs, when `isRecordingEnabled = false`, Relay looks up these stored files and returns their recorded responses without making actual network calls. This means you can rely on consistent and stable test inputs and fast-loading previews.
+
+Below is an example of how recorded files might be organized:
+
+```
+Tests
+ └─ __RelayRecords__
+     ├─ customSession
+     │   └─ GET-typicode.com-posts_a25b94c312bb64a5
+     ├─ defaultSession
+     │   └─ GET-typicode.com-posts_e3fdab5b4d16442f
+     ├─ handleMultipleRequests
+     │   ├─ GET-typicode.com-posts_9986e99294a801c6
+     │   ├─ GET-typicode.com-users_1a8fe3094918fe243
+     │   └─ POST-typicode.com-posts_ea6ce919bf1be8a6
+     ... and so on
+```
+
+Each directory represents a specific test scenario or function call, and each file inside corresponds to a particular network request/response pair that Relay recorded.
 
 ## Features
 
@@ -16,19 +38,14 @@ The primary use case for Relay is **unit tests and SwiftUI previews that require
 
 1. **Initial Setup and Recording**:  
    - Run your unit test or SwiftUI preview with `isRecordingEnabled = true`.  
-   - Relay will record all intercepted network requests and responses during this run.
-   
-2. **Subsequent Uses with Recorded Data**:  
-   - Turn off recording (`isRecordingEnabled = false`) in your tests or previews.  
-   - Relay now uses the previously recorded responses, allowing you to quickly test or preview your application’s UI without network latency or server calls.
-   
-3. **Manipulating Recorded Results**:  
-   - Leverage `jsonValueOverrides` to modify parts of the recorded response dynamically, simulating different states or data conditions without needing new recordings.
+   - Relay records all intercepted network requests and their responses.
 
-This approach ensures that:
-- Your first run captures real data.
-- Subsequent runs are fast and consistent, backed by recorded responses.
-- You can easily adjust the data to test a variety of scenarios.
+2. **Subsequent Uses with Recorded Data**:  
+   - Turn off recording (`isRecordingEnabled = false`).  
+   - Relay now uses the previously recorded responses from the file system, ensuring no live server calls.
+
+3. **Manipulating Recorded Results**:  
+   - Use `jsonValueOverrides` to modify parts of the recorded response dynamically, simulating different states without needing new recordings.
 
 ## Usage
 
@@ -51,15 +68,15 @@ let processor = Relay.recordAndReplay(
 **Parameters:**
 
 - **`isRecordingEnabled`**:  
-  - `true`: Capture and store responses for the initial run.  
+  - `true`: Capture and store responses during the initial run.  
   - `false`: Subsequent runs use recorded data, ensuring no live server calls.
-- **`urlKeywords`**: An array of keywords to filter and intercept URLs.
-- **`jsonValueOverrides`**: A dictionary of JSON keys and their replacement values in responses, allowing you to manipulate recorded data.
+- **`urlKeywords`**: Filter requests by URL keywords.
+- **`jsonValueOverrides`**: A dictionary of keys and their override values to manipulate responses.
 
 **Recording Folder Structure:**
 
-- **`recordingRootFolder`**: Automatically detected based on the file in which `recordAndReplay` is invoked, storing all recordings under a `__RelayRecords__` folder.
-- **`recordingFolder`**: Defaults to the name of the function from which `recordAndReplay` was called, making it easy to organize and identify which tests produced which recordings.
+- **`recordingRootFolder`**: Automatically detected based on the file invoking `recordAndReplay`, with all recordings stored under a `__RelayRecords__` folder.
+- **`recordingFolder`**: Defaults to the function name from which `recordAndReplay` was called, making it easy to identify which tests generated which recordings.
 
 **Important Note on Test Environments:**
 
@@ -81,10 +98,10 @@ Relay.interceptAndModify(
 If you're using a custom `URLSession` with a custom `URLSessionConfiguration`, you have two options to ensure that Relay can intercept the requests:
 
 1. **Initialize Relay Before Session Creation**:  
-   Call `recordAndReplay` or `interceptAndModify` **before** creating your custom `URLSession`. This ensures the Relay proxy is correctly injected.
+   Call `recordAndReplay` or `interceptAndModify` **before** creating your custom `URLSession`.
 
 2. **Manually Set `protocolClasses`**:  
-   If the session is created first, manually set the session’s `protocolClasses` array to include `RelayURLProtocol`:
+   If the session is already created, manually set `protocolClasses` to include `RelayURLProtocol`:
 
    ```swift
    static let urlSession: URLSession = {
