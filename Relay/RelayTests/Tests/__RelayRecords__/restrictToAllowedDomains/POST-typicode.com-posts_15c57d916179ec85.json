@@ -1,0 +1,45 @@
+{
+  "requestBody" : {
+    "isBase64Encoded" : false,
+    "data" : ""
+  },
+  "statusCode" : 201,
+  "requestHeaders" : {
+    "Content-Length" : "65",
+    "X-RelayReplay" : "true",
+    "Content-Type" : "application\/json"
+  },
+  "service" : "https:\/\/jsonplaceholder.typicode.com\/posts",
+  "responseData" : {
+    "data" : "{\n  \"userId\": 1,\n  \"title\": \"Hello World\",\n  \"body\": \"This is a test\",\n  \"id\": 101\n}",
+    "isBase64Encoded" : false
+  },
+  "requestType" : "POST",
+  "responseHeaders" : {
+    "cf-cache-status" : "DYNAMIC",
+    "x-ratelimit-reset" : "1733485801",
+    "server-timing" : "cfL4;desc=\"?proto=TCP&rtt=13728&min_rtt=12397&rtt_var=1923&sent=29&recv=36&lost=0&retrans=0&sent_bytes=10564&recv_bytes=2028&delivery_rate=286441&cwnd=256&unsent_bytes=0&cid=650e5cb97e63ec96&ts=1426&x=0\"",
+    "x-powered-by" : "Express",
+    "x-ratelimit-remaining" : "997",
+    "access-control-expose-headers" : "Location",
+    "Alt-Svc" : "h3=\":443\"; ma=86400",
+    "Etag" : "W\/\"54-38o+A2clj8LxI\/S8zbHlhKGqCtg\"",
+    "Via" : "1.1 vegur",
+    "cf-ray" : "8edc0d118997c9f0-OTP",
+    "access-control-allow-credentials" : "true",
+    "Content-Length" : "84",
+    "Expires" : "-1",
+    "reporting-endpoints" : "heroku-nel=https:\/\/nel.heroku.com\/reports?ts=1733485750&sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d&s=UhojsM%2BPqcgZWpxtq5JIULbuQf3LSazx9Pp3eDfe3pk%3D",
+    "Vary" : "Origin, X-HTTP-Method-Override, Accept-Encoding",
+    "nel" : "{\"report_to\":\"heroku-nel\",\"max_age\":3600,\"success_fraction\":0.005,\"failure_fraction\":0.05,\"response_headers\":[\"Via\"]}",
+    "Server" : "cloudflare",
+    "report-to" : "{\"group\":\"heroku-nel\",\"max_age\":3600,\"endpoints\":[{\"url\":\"https:\/\/nel.heroku.com\/reports?ts=1733485750&sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d&s=UhojsM%2BPqcgZWpxtq5JIULbuQf3LSazx9Pp3eDfe3pk%3D\"}]}",
+    "Content-Type" : "application\/json; charset=utf-8",
+    "Cache-Control" : "no-cache",
+    "x-content-type-options" : "nosniff",
+    "x-ratelimit-limit" : "1000",
+    "Location" : "https:\/\/jsonplaceholder.typicode.com\/posts\/101",
+    "Date" : "Fri, 06 Dec 2024 11:49:10 GMT",
+    "Pragma" : "no-cache"
+  }
+}
